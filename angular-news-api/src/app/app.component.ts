@@ -15,11 +15,11 @@ export class AppComponent {
 
   private articles = [];
   private adresa = "https://newsapi.org/v2/everything?q=apple&from=2020-02-12&to=2020-02-12&sortBy=popularity&apiKey=e2fea88204ac46cf8072f29379921c64";
-  hledat: string;
+  private search = ''
 
   clickedButton() {
-    this.hledat = "";
-    this.adresa = "https://newsapi.org/v2/everything?q=" + this.hledat + "apple&from=2020-02-12&to=2020-02-12&sortBy=popularity&apiKey=e2fea88204ac46cf8072f29379921c64";
+    const hledat = this.search;
+    this.adresa = "https://newsapi.org/v2/everything?q=apple+" + this.search + "&from=2020-02-12&to=2020-02-12&sortBy=popularity&apiKey=e2fea88204ac46cf8072f29379921c64";
     console.log(this.adresa);
     this.articles = [];
     this.httpClient
@@ -28,7 +28,7 @@ export class AppComponent {
       (data: any) => {
         this.articles = data["articles"];
         console.log(this.articles);
-        }, (error) => {
+      }, (error) => {
 
       }
     );
