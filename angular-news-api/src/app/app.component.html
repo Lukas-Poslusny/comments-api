@@ -1,8 +1,8 @@
 <nav class="navbar navbar-light bg-light">
-  <header>
-    <input type="text_input" placeholder="Search..">
-    <button class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2" type="submit" (click)="clickedButton(text_input)">Search</button>
-  </header>
+  <form>
+    <input type="text" name="search" [(ngModel)]="search" placeholder="Search..">
+    <button class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2" type="submit" (click)="clickedButton()">Search</button>
+  </form>
 </nav>
 
 <body>
@@ -13,7 +13,7 @@
     <h4><span>Author: </span> {{a.author}}</h4>
 
     <p>{{a.description}}</p>
-    <a  href="{{a.url}}">Read more</a>
+    <a href="{{a.url}}">Read more</a>
     <hr>
   </div>
 </body>
