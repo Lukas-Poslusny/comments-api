@@ -15,15 +15,16 @@ export class LoggedInComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (localStorage.getItem('access_token')) {
+      console.log(localStorage.getItem('access_token'));
+      this.userService.accessToken = (localStorage.getItem('access_token'));
+    } else {
+      this.router.navigate(['/home']);
+    }
   }
 
   clickedButton() {
-    this.userService.deleteUser().subscribe(
-      (data: any) => {
-        AccessToken.token = '';
-        this.router.navigate(['/home']);
-      }, (error) => {
-      }
-    );
+    localStorage.clear();
+    this.router.navigate(['/home']);
   }
 }

@@ -9,7 +9,7 @@ import { ReturnedData } from '../return-data';
 export class UserService {
   url = 'http://85.160.64.233:3000/';
   accessToken: string;
-  
+
 
   constructor(
     private httpClient: HttpClient

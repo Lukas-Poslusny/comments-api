@@ -17,14 +17,12 @@ export class LoginComponent implements OnInit, AfterViewInit {
   constructor(private router: Router, private userService: UserService) {
   }
 
-  ngOnInit() {
-  }
-
   clickedButton() {
     console.log(this.userService);
     this.userService.loginUser(this.email, this.password).subscribe(
       (data) => {
         this.userService.accessToken = data.body.access_token;
+        localStorage.setItem('access_token', this.userService.accessToken);
         this.router.navigate(['/logged-in']);
         console.log(this.userService.accessToken);
       }, (error) => {
@@ -34,5 +32,16 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     console.log(this.userService);
+  }
+
+  ngOnInit() {
+    if (localStorage.getItem('access_token')) {
+      console.log(localStorage.getItem('access_token'));
+      this.userService.accessToken = (localStorage.getItem('access_token'));
+
+      this.router.navigate(['/logged-in']);
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
 }

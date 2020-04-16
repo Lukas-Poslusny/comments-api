@@ -41,7 +41,7 @@ export class UserInfoComponent implements OnInit {
       error => {
         console.log(error);
       }
-      );
+    );
   }
 
   loadPage() {
@@ -74,8 +74,18 @@ export class UserInfoComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (localStorage.getItem('access_token')) {
+      console.log(localStorage.getItem('access_token'));
+      this.userService.accessToken = (localStorage.getItem('access_token'));
+
+      this.router.navigate(['/user-info']);
+    } else {
+      this.router.navigate(['/login']);
+    }
+
     this.getPageAmount();
     this.loadPage();
+
   }
 
 }
