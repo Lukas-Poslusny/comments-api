@@ -1,19 +1,11 @@
-<nav class="navbar navbar-light bg-light">
-  <form>
-    <input type="text" name="search" [(ngModel)]="search" placeholder="Search..">
-    <button class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2" type="submit" (click)="clickedButton()">Search</button>
-  </form>
+<nav>
+  <header>
+    <button class="btn" routerLink="/home">Home</button>
+    <button class="btn" routerLink="/logged-in">Logged-in</button>
+    <button class="btn" routerLink="/login">Login</button>
+    <button class="btn" routerLink="/register">Register</button>
+    <button class="btn" routerLink="/user-info">User info</button>
+  </header>
 </nav>
 
-<body>
-
-  <div class="ahoj" *ngFor="let a of articles">
-    <h2><u>{{a.title}}</u></h2>
-
-    <h4><span>Author: </span> {{a.author}}</h4>
-
-    <p>{{a.description}}</p>
-    <a href="{{a.url}}">Read more</a>
-    <hr>
-  </div>
-</body>
+<router-outlet></router-outlet>

@@ -1,0 +1,34 @@
+<div>
+  <table class="table" style="background-color: lightgrey;">
+    <th class="id">Id</th>
+    <th class="username">Name</th>
+    <th class="email">Email</th>
+  </table>
+
+  <table *ngFor="let i of usersArray" class="table">
+    <th class="id">{{i.id}}</th>
+    <th class="username">{{i.username}}</th>
+    <th class="email">{{i.email}}</th>
+
+  </table>
+
+  <nav aria-label="Page navigation example">
+    <ul class="pagination pg-blue">
+      <li *ngIf="currentPage>0" class="page-item"><a class="page-link" (click)="increasePageButton(-1)">Previous</a></li>
+      <li *ngIf="currentPage<=0"class="page-item"><a class="page-link non-active">Previous</a></li>
+
+      <li *ngIf="currentPage>=pageCount+1" class="page-item"><a class="page-link" (click)="changePageButton(currentPage-2)">{{currentPage-1}}</a></li>
+      <li *ngIf="currentPage>0" class="page-item"><a class="page-link" (click)="changePageButton(currentPage-1)">{{currentPage-1+1}}</a></li>
+
+      <li class="page-item"><a class="page-link current-page">{{currentPage+1}}</a></li>
+
+      <li *ngIf="currentPage<pageCount+1" class="page-item"><a class="page-link" (click)="changePageButton(currentPage+1)">{{currentPage+1+1}}</a></li>
+      <li *ngIf="currentPage<=0" class="page-item"><a class="page-link" (click)="changePageButton(2)">3</a></li>
+
+      <li *ngIf="currentPage<pageCount+1" class="page-item"><a class="page-link" (click)="increasePageButton(1)">Next</a></li>
+      <li *ngIf="currentPage>=pageCount+1" class="page-item"><a class="page-link non-active">Next</a></li>
+
+    </ul>
+  </nav>
+
+</div>
